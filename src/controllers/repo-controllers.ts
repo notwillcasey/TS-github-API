@@ -31,11 +31,17 @@ const getRepos = async function (req: Request, res: Response) {
     return res.status(200).send(repositories);
 
   } catch (e: any) {
+    let statusCode: number = e.response.status;
+    let statusMessage: string = `error - try again later (${e.message})`
+
     if (e.response.statusText === 'Not Found') {
-      return res.status(404).send('username not found')
+      statusMessage = `username not found - (${e.message})`
+    } else if (e.response.status >= 500) {
+      statusMessage = `server error - try again later  - (${e.message})`;
+    } else if (e.response.status === 401) {
+      statusMessage = `unauthorized - ensure personal key is up to date  - (${e.message})`
     }
-    console.log(e);
-    return res.status(400).send(e);
+    return res.status(statusCode).send(statusMessage);
   }
 
 };
