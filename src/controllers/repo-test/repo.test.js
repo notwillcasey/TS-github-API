@@ -1,6 +1,3 @@
-// const app = require('../server');
-// const supertest = require('supertest');
-// const request = supertest(app.initApp);
 const controllers = require('../repo-controllers');
 const mockData = require('./mockRepositoryResponse.json');
 
@@ -20,4 +17,5 @@ describe('REPOS CONTROLLERS UNIT TESTING', () => {
     expect(response[0]).toHaveProperty('url');
 
   })
+
 })
