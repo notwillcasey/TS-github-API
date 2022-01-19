@@ -1,19 +1,10 @@
-import { Request, Response } from 'express';
 import { AxiosResponse } from 'axios';
-import requests from './repo-requests';
+import { Repo } from './repo.interface';
 
-interface Repo {
-  name: string,
-  description: string,
-  url: string
-};
-
-const getRepos = async function (req: Request, res: Response) {
-
-  const user: any = req.query.user;
+const getRepos = async function (user: any, getRepositories: Function) {
 
   try {
-    const result: AxiosResponse = await requests.getRepositoriesRequest(user);
+    const result: AxiosResponse = await getRepositories(user);
 
     const repositories: Repo[] = result.data.map((rep: any) => {
       const repository: Repo = {
@@ -24,21 +15,12 @@ const getRepos = async function (req: Request, res: Response) {
       return repository;
     })
 
-    return res.status(200).send(repositories);
+    return repositories;
 
   } catch (e: any) {
-    let statusCode: number = e.response.status;
-    let statusMessage: string = `error - try again later (${e.message})`
 
-    if (e.response.statusText === 'Not Found') {
-      statusMessage = `username not found - (${e.message})`
-    } else if (e.response.status >= 500) {
-      statusMessage = `server error - try again later  - (${e.message})`;
-    } else if (e.response.status === 401) {
-      statusMessage = `unauthorized - ensure personal key is up to date  - (${e.message})`
-    }
+    return Promise.reject(e);
 
-    return res.status(statusCode).send(statusMessage);
   }
 
 };
