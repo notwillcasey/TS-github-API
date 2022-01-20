@@ -22,10 +22,11 @@
     "ts-jest": "^27.1.3"
   },
   "scripts": {
-    "test-unit": "jest --coverage ./src/controllers/repo-controllers/repo-test/repo.test.js",
-    "test-int": "jest --coverage --forceExit ./src/controllers/repo-controllers/repo-test/repo-integration.test.js",
+    "test-unit": "jest --coverage ./tests/repo.test.js",
+    "test-int": "jest --coverage --forceExit ./tests/repo-integration.test.js",
     "dev": "nodemon src/server-start.ts",
-    "build": "rm -rf build/ && tsc"
+    "build": "rm -rf build/ && tsc",
+    "start": "rm -rf build/ && tsc && node build/server-start.js"
   },
   "repository": {
     "type": "git",
