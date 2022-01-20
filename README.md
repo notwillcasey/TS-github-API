@@ -12,7 +12,7 @@ QUERY PARAMS :
 user: (string)
 ```
 RESPONSE FORMAT :
-> returns an array of objects containing data for each open repository for the provided user
+> returns an array of objects containing data for each public repository for the provided user
 ```
 [
     {
@@ -64,4 +64,4 @@ Execute the following to start the Node.js server in development:
 
 Execute the following to run the test suite:
 - 'npm run test-unit' to run unit tests
-- 'npm run test-int' to run integration testiong (this requires GitHub token in .env to properly function
+- 'npm run test-int' to run integration testing (this requires GitHub token in .env to properly function
