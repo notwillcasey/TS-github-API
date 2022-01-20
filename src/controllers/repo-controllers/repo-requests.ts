@@ -1,5 +1,4 @@
-import { Request, Response } from 'express';
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 
 const getRepositoriesRequest = function (username: string) {
   const url: string = `https://api.github.com/users/${username}/repos`;

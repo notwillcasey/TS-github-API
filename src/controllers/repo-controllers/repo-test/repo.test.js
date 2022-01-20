@@ -1,4 +1,4 @@
-const controllers = require('../repo-controllers');
+const controllers = require('../index');
 const mockData = require('./mockRepositoryResponse.json');
 
 describe('REPOS CONTROLLERS UNIT TESTING', () => {

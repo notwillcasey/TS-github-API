@@ -1,8 +1,6 @@
 import express, { Request, Response } from 'express';
-import controllers from '../controllers/repo-controllers';
-import requests from '../controllers/repo-requests';
-import { AxiosResponse, AxiosRequestConfig } from 'axios';
-
+import controllers from '../controllers/repo-controllers/index';
+import requests from '../controllers/repo-controllers/repo-requests';
 
 const router = express.Router();
 
